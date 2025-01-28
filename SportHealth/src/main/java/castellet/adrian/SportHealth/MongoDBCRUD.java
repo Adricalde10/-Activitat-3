@@ -16,14 +16,14 @@ public class MongoDBCRUD {
 
         try (MongoClient mongoClient = MongoClients.create(uri)) {
             MongoDatabase database = mongoClient.getDatabase("SportHealth");
-            MongoCollection<Document> collection = database.getCollection("Entrades");
-
+            MongoCollection<Document> collection = database.getCollection("Usuaris");
+            System.out.println("Conexión exitosa a MongoDB: " + database.getName());
             FindIterable<Document> documents = collection.find();
             for (Document doc : documents) {
                 System.out.println(doc.toJson());
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        }  catch (Exception e) {
+            System.err.println("Error al conectar a MongoDB: " + e.getMessage());
         }
     }
 }
