@@ -12,7 +12,7 @@ import com.mongodb.client.MongoDatabase;
 public class MongoDBCRUD {
 	public static void main(String[] args) {
         // Connexió a MongoDB Atlas
-        String uri = "mongodb+srv://04adrianc:g9SkSHvjMaeNqX6b@cluster0.mpvz2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+        String uri = "mongodb+srv://04adrianc:****@cluster0.mpvz2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
         try (MongoClient mongoClient = MongoClients.create(uri)) {
             MongoDatabase database = mongoClient.getDatabase("SportHealth");

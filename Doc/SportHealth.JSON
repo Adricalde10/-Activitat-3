@@ -1,125 +1,36 @@
-[
-  {
-    "_id": "Adricalde",
-    "nom": "Adrian",
-    "edat": 20,
-    "pes": 65,
-    "altura": 151,
-    "genere": "Masculi",
-    "data_registre": "2025-01-21",
-    "data_ultima_actualització": "2025-01-25",
-    "activitats": [
-      {
-        "data": "2025-01-20",
-        "tipus_activitat": "Piernas",
-        "duració_minuts": 80,
-        "calories_cremades": 250,
-        "cardio": 140
-      },
-      {
-        "data": "2025-01-20",
-        "tipus_activitat": "Espalda",
-        "duració_minuts": 80,
-        "calories_cremades": 250,
-        "cardio": 140
-      }
-    ],
-    "missatges": [
-      {
-        "data": "2025-01-20",
-        "missatge": "Dia de Piernas hecho"
-      },
-      {
-        "data": "2025-01-20",
-        "missatge": "Dia de Espalda hecho"
-      }
-    ]
-  },
-  {
-    "_id": "SuperCaballito07",
-    "nom": "Miguel",
-    "edat": 20,
-    "pes": 87,
-    "altura": 183,
-    "genere": "Masculi",
-    "data_registre": "2025-01-28",
-    "data_ultima_actualització": "2025-01-28",
-    "activitats": [
-      {
-        "data": "2025-01-28",
-        "tipus_activitat": "Piernas",
-        "duració_minuts": 80,
-        "calories_cremades": 250,
-        "cardio": 140
-      },
-      {
-        "data": "2025-01-20",
-        "tipus_activitat": "Espalda",
-        "duració_minuts": 80,
-        "calories_cremades": 250,
-        "cardio": 140
-      }
-    ],
-    "missatges": [
-      {
-        "data": "2025-01-28",
-        "missatge": "Dia de Piernas hecho"
-      },
-      {
-        "data": "2025-01-20",
-        "missatge": "Dia de Espalda hecho"
-      }
-    ]
-  },
- {
-    "_id": "Kronnox15",
-    "nom": "Oriol",
-    "edat": 20,
-    "pes": 80,
-    "altura": 180,
-    "genere": "Masculi",
-    "data_registre": "2025-01-28",
-    "data_ultima_actualització": "2025-01-28",
-    "activitats": [
-      {
-        "data": "2025-01-28",
-        "tipus_activitat": "Karate",
-        "duració_minuts": 60,
-        "calories_cremades": 250,
-        "cardio": 140
-      }
-    ],
-    "missatges": [
-      {
-        "data": "2025-01-28",
-        "missatge": "Dia de Karate hecho"
-      }
-    ]
-  },
- {
-    "_id": "Adrexy12",
-    "nom": "Andres",
-    "edat": 22,
-    "pes": 60,
-    "altura": 160,
-    "genere": "Masculi",
-    "data_registre": "2024-01-28",
-    "data_ultima_actualització": "2025-01-28",
-    "activitats": [
-      {
-        "data": "2024-08-28",
-        "tipus_activitat": "Futbol",
-        "duració_minuts": 90,
-        "calories_cremades": 250,
-        "cardio": 140
-      }
-    ],
-    "missatges": [
-      {
-        "data": "2024-08-28",
-        "missatge": "Ha sigut molt bon partit"
-      }
-    ]
-  }
+{
+  "_id": "Adricalde",
+  "nom": "Adrian",
+  "edat": 20,
+  "pes": 65,
+  "altura": 151,
+  "genere": "Masculi",
+  "data_registre": "2025-01-21",
+  "data_ultima_actualització": "2025-01-25",
+  "activitats": [
+    {
+      "data": "2025-01-20",
+      "tipus_activitat": "Piernas",
+      "duració_minuts": 80,
+      "calories_cremades": 250,
+      "cardio": 140
+    },
+    }
+      "data": "2025-01-20",
+      "tipus_activitat": "Espalda",
+      "duració_minuts": 80,
+      "calories_cremades": 250,
+      "cardio": 140
 
-]
+  ],
+  "missatges": [
+    {
+      "data": "2025-01-20",
+      "missatge": "Dia de Piernas hecho"
+    },
+    {
+      "data": "2025-01-20",
+      "missatge": "Dia de Espalda hecho"
+    }
+  ]
+}
