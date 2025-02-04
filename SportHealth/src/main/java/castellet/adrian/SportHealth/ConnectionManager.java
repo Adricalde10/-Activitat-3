@@ -1,6 +1,8 @@
 package castellet.adrian.SportHealth;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 import org.bson.Document;
@@ -36,13 +38,22 @@ public class ConnectionManager {
 		System.out.println("1. Insereix una document");
 		System.out.println("2. Obtenir tots els documents");
 		System.out.println("3. Obtenir documents per data");
+		System.out.print("Posa una Opcio: ");
 		int op = scanner.nextInt();
 		switch(op) {
 		case 1:
-			System.out.println("opcio 1");
+			Usuaris usuari = new Usuaris("Adrian");
+           // Document docu = new Document("name", usuari.getName());
+			System.out.println(usuari);
 		case 2:
 			FindIterable<Document> documents = collection.find();
             for (Document doc : documents) {
+                System.out.println(doc.toJson());
+            }
+		case 3:
+		
+			FindIterable<Document> documents2 = collection.find();
+            for (Document doc : documents2) {
                 System.out.println(doc.toJson());
             }
 		}
