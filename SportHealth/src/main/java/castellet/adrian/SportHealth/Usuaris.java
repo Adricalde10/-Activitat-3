@@ -3,7 +3,6 @@ package castellet.adrian.SportHealth;
 import org.bson.Document;
 
 public class Usuaris {
-	String id;
     String name;
     int edat;
     int pes;
@@ -11,9 +10,8 @@ public class Usuaris {
     String genere;
     String data_registre;
     
-    public Usuaris(String name,String id, int edat, int pes,int altura,String genere, String data_registre) {
+    public Usuaris(String name, int edat, int pes,int altura,String genere, String data_registre) {
         this.name = name;
-        this.id = id;
         this.edat = edat;
         this.pes = pes;
         this.altura = altura;
@@ -23,9 +21,6 @@ public class Usuaris {
     
     public String getName() {  // Corregido el nombre del método
         return name;
-    }
-    public String getId() {
-    	return id;
     }
     public int getEdat() {
     	return edat;
@@ -45,9 +40,6 @@ public class Usuaris {
     public void setName(String name) {  // Corregido el nombre del método
         this.name = name;
     }
-    public void setId(String id) {
-        this.id = id;
-    }
     public void setEdat(int edat) {
     	this.edat=edat;
     }
@@ -65,13 +57,12 @@ public class Usuaris {
     }
     @Override
     public String toString() {
-        return "Usuari [\n  name=" + name + " id= " +id+" edat= "+edat+ " Pes: "+ pes+ " altura= "+ altura+ " genere= "+genere+" data_registre" + data_registre +"\n]";
+        return "Usuari [\n  name=" + name + " edat= "+edat+ " Pes: "+ pes+ " altura= "+ altura+ " genere= "+genere+" data_registre" + data_registre +"\n]";
     }
     
 
     public Document toDocument() {
         return new Document("nom", this.name)
-        		.append("_id", this.id)
         		.append("edat",this.edat)
         		.append("edat",this.pes)
         		.append("altura", this.altura)

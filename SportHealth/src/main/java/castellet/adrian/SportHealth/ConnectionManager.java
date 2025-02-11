@@ -45,8 +45,6 @@ public class ConnectionManager {
 		int op = scanner.nextInt();
 		switch(op) {
 		case 1:
-			System.out.println("Introdueix el id:");
-			String id = scanner.next();
 			System.out.println("Introdueix el nom:");
 			String nom = scanner.next();
 			System.out.println("Introdueix l'edat:");
@@ -60,7 +58,7 @@ public class ConnectionManager {
 			System.out.println("Introdueix la data de registre:");
 			String data_registre = scanner.next();
 			
-			Usuaris usuari = new Usuaris(id, nom, edat, pes, altura, genere, data_registre);
+			Usuaris usuari = new Usuaris(nom, edat, pes, altura, genere, data_registre);
 			Document docu = usuari.toDocument();
 			collection.insertOne(docu);
 			System.out.println(usuari);
