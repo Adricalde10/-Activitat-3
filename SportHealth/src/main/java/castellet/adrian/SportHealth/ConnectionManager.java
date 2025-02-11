@@ -34,10 +34,13 @@ public class ConnectionManager {
 	}
 	public static void menu() {
 		Scanner scanner = new Scanner(System.in);
+		boolean bucle=true;
+		while (bucle) {
 		System.out.println("Menu");
 		System.out.println("1. Insereix una document");
 		System.out.println("2. Obtenir tots els documents");
 		System.out.println("3. Obtenir documents per data");
+		System.out.println("4.Salir");
 		System.out.print("Posa una Opcio: ");
 		int op = scanner.nextInt();
 		switch(op) {
@@ -69,16 +72,22 @@ public class ConnectionManager {
 			}
 			break;
 		case 3:
-			System.out.println("Introdueix la data:");
+			System.out.println("Introdueix la data Inicial:");
 			String dateInici = scanner.next();
+			System.out.println("Introdueix la data Final:");
+			String dateFinal = scanner.next();
 			FindIterable<Document> documents2 = collection.find(Filters.and(
-					Filters.gte("data_registre", "2025-01-21"),
-					Filters.lte("data_registre", "2025-01-28"))
+					Filters.gte("data_registre", dateInici),
+					Filters.lte("data_registre", dateFinal))
 					);
 			for (Document doc : documents2) {
 				System.out.println(doc.toJson()+"\n\n");
 			}
 			break;
+		case 4:
+			System.out.println("Exit...");
+			bucle=false;
+		}
 		}
 	}
 }
