@@ -1,91 +1,94 @@
 package castellet.adrian.SportHealth;
 
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.Scanner;
-import org.bson.Document;
 
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Filters;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ConnectionManager {
-	static String uri = "mongodb+srv://04adrianc:g9SkSHvjMaeNqX6b@cluster0.mpvz2.mongodb.net";
-	static MongoClient mongoClient = MongoClients.create(uri);
-	static MongoDatabase database = mongoClient.getDatabase("SportHealth");
-	static MongoCollection<Document> collection = database.getCollection("Usuaris");
-	public static void main(String[] args) {
-		// Connexió a MongoDB Atlas
-		//String uri = "mongodb+srv://04adrianc:g9SkSHvjMaeNqX6b@cluster0.mpvz2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-		try {
-			//MongoDatabase database = mongoClient.getDatabase("SportHealth");
-			//MongoCollection<Document> collection = database.getCollection("Usuaris");
-			System.out.println("Conexión exitosa a MongoDB: " + database.getName());
-			menu();
+
+    public static void main(String[] args) {
+        try {
+            System.out.println("Conexión exitosa a Versel: "  );
+            menu();
+        } catch (Exception e) {
+            System.err.println("Error al conectar a MongoDB: " + e.getMessage());
+        }
+    }
+
+    private static void sendUser(Usuaris usuari) {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://m6-api.vercel.app/Usuaris"))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(usuari.toJson()))
+                .build();
+        try {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            System.out.println(response.body());
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            JSONArray users = new JSONArray(response.body());
+            for (int i = 0; i < users.length(); i++) {
+                System.out.println(users.getJSONObject(i).toString(2));
+            }
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+   
 
 
-		}  catch (Exception e) {
-			System.err.println("Error al conectar a MongoDB: " + e.getMessage());
-		}
-	}
-	public static void menu() {
-		Scanner scanner = new Scanner(System.in);
-		boolean bucle=true;
-		while (bucle) {
-		System.out.println("Menu");
-		System.out.println("1. Insereix una document");
-		System.out.println("2. Obtenir tots els documents");
-		System.out.println("3. Obtenir documents per data");
-		System.out.println("4.Salir");
-		System.out.print("Posa una Opcio: ");
-		int op = scanner.nextInt();
-		switch(op) {
-		case 1:
-			System.out.println("Introdueix el nom:");
-			String nom = scanner.next();
-			System.out.println("Introdueix l'edat:");
-			int edat = scanner.nextInt();
-			System.out.println("Introdueix el Pes:");
-			int pes = scanner.nextInt();
-			System.out.println("Introdueix L'Altura:");
-			int altura = scanner.nextInt();
-			System.out.println("Introdueix el Genere:");
-			String genere = scanner.next();
-			System.out.println("Introdueix la data de registre:");
-			String data_registre = scanner.next();
-			
-			Usuaris usuari = new Usuaris(nom, edat, pes, altura, genere, data_registre);
-			Document docu = usuari.toDocument();
-			collection.insertOne(docu);
-			System.out.println(usuari);
-			break;
-		case 2:
-			FindIterable<Document> documents = collection.find();
-			for (Document doc : documents) {
-				System.out.println(doc.toJson());
-			}
-			break;
-		case 3:
-			System.out.println("Introdueix la data Inicial:");
-			String dateInici = scanner.next();
-			System.out.println("Introdueix la data Final:");
-			String dateFinal = scanner.next();
-			FindIterable<Document> documents2 = collection.find(Filters.and(
-					Filters.gte("data_registre", dateInici),
-					Filters.lte("data_registre", dateFinal))
-					);
-			for (Document doc : documents2) {
-				System.out.println(doc.toJson()+"\n\n");
-			}
-			break;
-		case 4:
-			System.out.println("Exit...");
-			bucle=false;
-		}
-		}
-	}
+    public static void menu() {
+        Scanner scanner = new Scanner(System.in);
+        boolean bucle = true;
+        while (bucle) {
+            System.out.println("Menu");
+            System.out.println("1. Insereix una document");
+            System.out.println("2. Obtenir tots els documents");
+            System.out.println("3. Obtenir documents per data");
+            System.out.println("4.Salir");
+            System.out.print("Posa una Opcio: ");
+            int op = scanner.nextInt();
+            switch (op) {
+                case 1:
+                    System.out.println("Introdueix el nom:");
+                    String nom = scanner.next();
+                    System.out.println("Introdueix l'edat:");
+                    int edat = scanner.nextInt();
+                    System.out.println("Introdueix el Pes:");
+                    int pes = scanner.nextInt();
+                    System.out.println("Introdueix L'Altura:");
+                    int altura = scanner.nextInt();
+                    System.out.println("Introdueix el Genere:");
+                    String genere = scanner.next();
+                    System.out.println("Introdueix la data de registre:");
+                    String data_registre = scanner.next();
+                    Usuaris usuari = new Usuaris(nom, edat, pes, altura, genere, data_registre);
+                    sendUser(usuari);
+                    break;
+                case 2:
+                	
+                    break;
+                case 3:
+                    System.out.println("Introdueix la data Inicial:");
+                    String dateInici = scanner.next();
+                    System.out.println("Introdueix la data Final:");
+                    String dateFinal = scanner.next();
+                    break;
+                case 4:
+                    System.out.println("Exit...");
+                    bucle = false;
+                    break;
+            }
+        }
+    }
 }

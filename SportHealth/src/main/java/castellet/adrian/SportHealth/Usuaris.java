@@ -1,6 +1,6 @@
 package castellet.adrian.SportHealth;
 
-import org.bson.Document;
+import org.json.JSONObject;
 
 public class Usuaris {
     String name;
@@ -61,12 +61,10 @@ public class Usuaris {
     }
     
 
-    public Document toDocument() {
-        return new Document("nom", this.name)
-        		.append("edat",this.edat)
-        		.append("edat",this.pes)
-        		.append("altura", this.altura)
-        		.append("genere", this.genere)
-        		.append("data_registre", data_registre);
+    public String toJson() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("name", this.name);
+        jsonObject.put("email", this.edat);
+        return jsonObject.toString();
     }
 }
